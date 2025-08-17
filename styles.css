@@ -153,6 +153,11 @@ body{
 }
 .checks li::before{ content: "✔ "; margin-right: .25rem; }
 
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
 .signature{
   margin-top: 1rem;
   font-style: italic;
