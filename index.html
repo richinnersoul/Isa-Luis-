@@ -3,55 +3,288 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Para Isa 💖</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Desculpa, meu amor 💗</title>
+  <!-- 
+    COMO USAR
+    1) Troque [NOME DELA] e demais textos pelas suas mensagens.
+    2) Substitua as imagens pelos seus arquivos (coloque na mesma pasta e ajuste o src).
+    3) Opcional: troque o áudio em assets/ musica.mp3 e o favicon.
+    4) Publique no GitHub Pages (Settings ▸ Pages ▸ Deploy from branch) ou envie o arquivo por WhatsApp/Drive.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Handlee&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff7fb;        /* fundo rosado suave */
+      --ink:#3b2f2f;       /* texto */
+      --rose:#ff7aa2;      /* rosa destaque */
+      --rose-2:#ffd5e5;    /* rosa claro */
+      --card:#ffffff;      /* cartões */
+      --good:#34c759;      /* verde check */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff);
+      overflow-x:hidden;
+    }
+    a{color:var(--rose); text-decoration:none}
+    header{
+      position:sticky; top:0; z-index:5; background:rgba(255,255,255,.7); backdrop-filter:blur(8px);
+      border-bottom:1px solid #f7d9e6;
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:16px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand .logo{width:32px; height:32px; border-radius:50%; background:radial-gradient(circle at 30% 30%,#fff, var(--rose)); box-shadow:0 0 0 2px #fff, 0 6px 20px rgba(255,122,162,.45)}
+    .nav{display:flex; gap:16px; font-size:14px}
+    .grid{display:grid; gap:24px}
+    .hero{position:relative; padding:72px 16px 40px; text-align:center}
+    .title{font-family:Handlee, cursive; font-size: clamp(28px,6vw,60px); margin:8px 0 0}
+    .subtitle{opacity:.8; font-size:clamp(14px,2.8vw,18px)}
+    .btn{display:inline-block; padding:12px 18px; border-radius:999px; background:var(--rose); color:#fff; font-weight:700; box-shadow:0 10px 24px rgba(255,122,162,.35); transition:.2s transform}
+    .btn:hover{transform:translateY(-2px)}
+    .card{background:var(--card); border-radius:20px; padding:22px; box-shadow:0 12px 30px rgba(0,0,0,.06);}
+    .section{padding:24px 16px}
+    .section h2{font-family:Handlee, cursive; font-size: clamp(22px,5vw,40px); margin:0 0 10px}
+    .muted{opacity:.7}
+
+    /* Galeria */
+    .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px}
+    .gallery figure{margin:0; overflow:hidden; border-radius:16px; position:relative}
+    .gallery img{width:100%; height:220px; object-fit:cover; display:block; filter:saturate(1.05); transition:transform .25s ease}
+    .gallery figure:hover img{transform:scale(1.04)}
+
+    /* Timeline */
+    .timeline{position:relative; margin:10px 0; padding-left:14px}
+    .timeline:before{content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:var(--rose-2)}
+    .tl-item{position:relative; margin:14px 0 14px 10px; padding-left:16px}
+    .tl-item:before{content:""; position:absolute; left:-12px; top:6px; width:12px; height:12px; background:var(--rose); border-radius:50%; box-shadow:0 0 0 3px #fff}
+    .tl-item .when{font-size:12px; opacity:.7}
+
+    /* Carta oculta */
+    .reveal{margin-top:12px}
+    .letter{display:none; white-space:pre-wrap; line-height:1.7}
+
+    /* Lista de promessas */
+    .promessas li{display:flex; align-items:center; gap:10px; margin:10px 0}
+    .check{width:22px; height:22px; border-radius:6px; border:2px solid var(--rose); display:inline-grid; place-items:center; cursor:pointer}
+    .check.done{background:var(--good); border-color:var(--good); color:#fff}
+
+    /* Rodapé */
+    footer{padding:24px 16px; text-align:center; font-size:14px}
+
+    /* Corações flutuando */
+    .hearts{position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:-1}
+    .heart{position:absolute; width:14px; height:14px; transform:rotate(45deg); background:var(--rose); opacity:.12; animation:float 10s linear infinite}
+    .heart:before,.heart:after{content:""; position:absolute; width:14px; height:14px; background:var(--rose); border-radius:50%}
+    .heart:before{left:-7px}
+    .heart:after{top:-7px}
+    @keyframes float{from{transform:translateY(110vh) rotate(45deg)} to{transform:translateY(-10vh) rotate(45deg)}}
+
+    /* Responsivo */
+    @media (min-width:900px){
+      .hero{padding:96px 16px 64px}
+      .grid.cols-2{grid-template-columns:1.1fr .9fr}
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Desculpa, Isa 💌</h1>
-    <p class="intro">Este site é um pedido de desculpas feito com carinho, de <strong>Luis</strong> para <strong>Isa</strong>.</p>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
 
-    <section class="gallery">
-      <h2>Nossas lembranças</h2>
-      <div class="photos">
-        <img src="assets/foto1.jpg" alt="Foto 1">
-        <img src="assets/foto2.jpg" alt="Foto 2">
-        <img src="assets/foto3.jpg" alt="Foto 3">
-        <img src="assets/foto4.jpg" alt="Foto 4">
-        <img src="assets/foto5.jpg" alt="Foto 5">
+  <header>
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between">
+      <div class="brand"><span class="logo"></span> <span>Para [NOME DELA]</span></div>
+      <nav class="nav">
+        <a href="#memorias">Memórias</a>
+        <a href="#carta">Carta</a>
+        <a href="#promessas">Promessas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="muted">De: [Seu nome] • Para: [NOME DELA]</p>
+        <h1 class="title" id="type">Eu errei. E quero consertar. 💔→💗</h1>
+        <p class="subtitle">Este site é um abraço em forma de pixels. Um jeitinho sincero de dizer: me perdoa?</p>
+        <div style="height:18px"></div>
+        <a class="btn" href="#carta">Ler minha carta</a>
       </div>
     </section>
 
-    <section class="letter">
-      <h2>Minha carta para você</h2>
-      <p>Isa, sei que errei e quero que saiba que cada detalhe deste site foi feito pensando em você. 💖</p>
-      <p>Prometo que vou me esforçar para ser uma versão melhor de mim mesmo, porque você merece sempre o melhor. </p>
-      <p>Te amo muito! – Luis</p>
+    <!-- CARTÕES DESTAQUE -->
+    <section class="section">
+      <div class="wrap grid cols-3">
+        <div class="card">
+          <h3>Assumo meu erro</h3>
+          <p class="muted">Nada de desculpas vazias. Eu reconheço o que fiz/como te magoei e estou trabalhando para ser melhor.</p>
+        </div>
+        <div class="card">
+          <h3>Te escuto de verdade</h3>
+          <p class="muted">Quero entender como você se sentiu. Seu coração é prioridade. Vou te ouvir sem interromper.</p>
+        </div>
+        <div class="card">
+          <h3>Mudança concreta</h3>
+          <p class="muted">Planos claros, atitudes diárias. Amor é verbo — e eu escolho conjugar.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="music">
-      <h2>Nossa trilha sonora</h2>
-      <audio controls autoplay loop>
-        <source src="assets/musica.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
+    <!-- MEMÓRIAS / GALERIA -->
+    <section class="section" id="memorias">
+      <div class="wrap grid cols-2">
+        <div class="card">
+          <h2>Nossas memórias</h2>
+          <p class="muted">Troque as fotos abaixo pelas de vocês 💞</p>
+          <div class="gallery">
+            <figure><img alt="nós dois sorrindo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop"/></figure>
+            <figure><img alt="mãos dadas" src="https://images.unsplash.com/photo-1542596592-ec6d8a4131d4?q=80&w=800&auto=format&fit=crop"/></figure>
+            <figure><img alt="noite estrelada" src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?q=80&w=800&auto=format&fit=crop"/></figure>
+            <figure><img alt="pôr do sol" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop"/></figure>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Pequena linha do tempo</h2>
+          <div class="timeline">
+            <div class="tl-item"><div class="when">[dd/mm/aaaa]</div><strong>O dia em que te conheci</strong><div class="muted">Eu ainda não sabia, mas era o começo do meu melhor capítulo.</div></div>
+            <div class="tl-item"><div class="when">[dd/mm/aaaa]</div><strong>Nosso primeiro date</strong><div class="muted">Sorrisos tímidos, coração acelerado, o mundo em slow motion.</div></div>
+            <div class="tl-item"><div class="when">[dd/mm/aaaa]</div><strong>Nosso momento favorito</strong><div class="muted">Descreva aqui um instante que sempre volta à sua mente.</div></div>
+            <div class="tl-item"><div class="when">Hoje</div><strong>O pedido de desculpas</strong><div class="muted">Eu te amo. Quero reparar, reconstruir e te fazer sorrir.</div></div>
+          </div>
+        </div>
+      </div>
     </section>
-  </div>
 
-  <div class="hearts"></div>
+    <!-- CARTA ABERTA -->
+    <section class="section" id="carta">
+      <div class="wrap">
+        <div class="card">
+          <h2>Minha carta para você</h2>
+          <p class="muted">Clique para revelar — é de coração. 💌</p>
+          <button class="btn reveal" id="reveal">Revelar carta</button>
+          <div class="letter" id="letter" aria-hidden="true">
+Querida [NOME DELA],
+
+Eu errei. Doeu em você — e em mim também, quando percebi o tamanho do que te causei. Não vou justificar. Vou assumir, aprender e mudar.
+
+Você merece leveza, respeito e cuidado. Prometo te ouvir com calma, validar seus sentimentos e ser presença segura. Quero que este pedido seja a primeira peça de uma ponte nova entre nós: mais sincera, mais madura, mais nossa.
+
+Se você topar, eu quero conversar olhando nos seus olhos, sem pressa. Quero ser a pessoa que deixa seus dias mais bonitos, não mais pesados. Te amo — e vou provar isso nas pequenas coisas de todos os dias.
+
+Com carinho,
+[Seu nome]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMESSAS -->
+    <section class="section" id="promessas">
+      <div class="wrap grid cols-2">
+        <div class="card">
+          <h2>Minhas promessas</h2>
+          <ul class="promessas" id="promessas">
+            <li><span class="check" role="checkbox" aria-checked="false"></span> Vou te ouvir até o fim, sem te cortar.</li>
+            <li><span class="check" role="checkbox" aria-checked="false"></span> Vou pedir desculpas sem “mas…”.</li>
+            <li><span class="check" role="checkbox" aria-checked="false"></span> Vou alinhar expectativas e cumprir combinados.</li>
+            <li><span class="check" role="checkbox" aria-checked="false"></span> Vou cuidar das pequenas gentilezas diárias.</li>
+            <li><span class="check" role="checkbox" aria-checked="false"></span> Vou procurar ajuda se eu repetir padrões ruins.</li>
+          </ul>
+          <p class="muted" style="font-size:12px">(Clique nos quadradinhos para marcar — fica salvo no seu navegador)</p>
+        </div>
+        <div class="card">
+          <h2>Cupons de Amor</h2>
+          <p class="muted">Resgatáveis quando você quiser 💝</p>
+          <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+            <div class="cupom card" style="border:dashed 2px var(--rose); text-align:center">
+              <h3>Vale um date surpresa</h3>
+              <p class="muted">Local + horário à sua escolha.</p>
+            </div>
+            <div class="cupom card" style="border:dashed 2px var(--rose); text-align:center">
+              <h3>Vale massagem</h3>
+              <p class="muted">30 min de mimos.</p>
+            </div>
+            <div class="cupom card" style="border:dashed 2px var(--rose); text-align:center">
+              <h3>Vale tarefa chata</h3>
+              <p class="muted">Eu faço por você sem reclamar.</p>
+            </div>
+            <div class="cupom card" style="border:dashed 2px var(--rose); text-align:center">
+              <h3>Vale filme com pipoca</h3>
+              <p class="muted">Você escolhe o filme 💫</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYER SIMPLES -->
+    <section class="section">
+      <div class="wrap card" style="display:flex; align-items:center; gap:14px; justify-content:space-between; flex-wrap:wrap">
+        <div>
+          <strong>Nossa trilha</strong>
+          <div class="muted">Coloque aqui a música que é a cara da gente.</div>
+        </div>
+        <audio id="player" src="assets/musica.mp3" controls preload="none" style="width:260px"></audio>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Feito com amor por [Seu nome] • <a href="#topo">voltar ao topo</a>
+  </footer>
 
   <script>
-    // Efeito de corações flutuando
-    const container = document.querySelector('.hearts');
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerText = '💖';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
-      container.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }, 800);
+    // Efeito de digitação no título
+    const typeEl = document.getElementById('type');
+    const original = typeEl.textContent.trim();
+    typeEl.textContent='';
+    let i = 0;
+    (function type(){
+      if(i <= original.length){
+        typeEl.textContent = original.slice(0, i++);
+        setTimeout(type, 35);
+      }
+    })();
+
+    // Corações flutuando
+    const hearts = document.getElementById('hearts');
+    for(let i=0;i<30;i++){
+      const h=document.createElement('div');
+      h.className='heart';
+      h.style.left=Math.random()*100+'vw';
+      h.style.animationDelay=(Math.random()*8)+'s';
+      h.style.opacity=0.07+Math.random()*0.18;
+      h.style.background = Math.random()>.5 ? 'var(--rose)' : '#ff9dbb';
+      hearts.appendChild(h);
+    }
+
+    // Revelar carta
+    const btn = document.getElementById('reveal');
+    const letter = document.getElementById('letter');
+    btn.addEventListener('click',()=>{
+      letter.style.display = letter.style.display==='block' ? 'none' : 'block';
+      letter.setAttribute('aria-hidden', letter.style.display==='block' ? 'false':'true');
+      btn.textContent = letter.style.display==='block' ? 'Ocultar carta' : 'Revelar carta';
+    });
+
+    // Checkboxes com persistência
+    const checks = document.querySelectorAll('.check');
+    checks.forEach((c,idx)=>{
+      const key='promessa_'+idx;
+      const val=localStorage.getItem(key);
+      if(val==='1'){ c.classList.add('done'); c.setAttribute('aria-checked','true'); c.innerHTML='✓'; }
+      c.addEventListener('click',()=>{
+        const done=c.classList.toggle('done');
+        c.setAttribute('aria-checked',done?'true':'false');
+        c.innerHTML=done?'✓':'';
+        localStorage.setItem(key, done?'1':'0');
+      })
+    });
   </script>
 </body>
 </html>
