@@ -1,0 +1,196 @@
+/* ====== Tema ====== */
+:root{
+  --bg: #3f1a6b;            /* Roxo profundo */
+  --bg-2: #5a2a8c;          /* Roxo médio */
+  --text: #f7ecff;          /* Quase branco com leve lilás */
+  --muted: #e8d9ff;
+  --primary: #ffffff;
+  --card: rgba(255,255,255,0.12);
+  --card-strong: rgba(255,255,255,0.18);
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ====== Reset básico ====== */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 20% 0%, var(--bg-2), var(--bg));
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.wrapper{
+  width: min(100% - 2rem, 1000px);
+  margin-inline: auto;
+}
+
+/* ====== Corações de fundo ====== */
+.hearts-bg{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.hearts-bg span{
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #ffd6f3 60%, #ffffff00 70%);
+  transform: rotate(45deg);
+  animation: floatUp 14s linear infinite;
+  filter: blur(0.2px);
+  opacity: .35;
+  border-radius: 2px;
+}
+.hearts-bg span::before,
+.hearts-bg span::after{
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  background: inherit;
+  border-radius: 50%;
+}
+.hearts-bg span::before{ left: -8px; }
+.hearts-bg span::after{ top: -8px; }
+.hearts-bg span:nth-child(odd){ animation-duration: 18s; opacity: .25; }
+.hearts-bg span:nth-child(1){ left:10%; animation-delay: 0s; }
+.hearts-bg span:nth-child(2){ left:20%; animation-delay: 2s; }
+.hearts-bg span:nth-child(3){ left:30%; animation-delay: 4s; }
+.hearts-bg span:nth-child(4){ left:40%; animation-delay: 1s; }
+.hearts-bg span:nth-child(5){ left:50%; animation-delay: 3s; }
+.hearts-bg span:nth-child(6){ left:60%; animation-delay: 5s; }
+.hearts-bg span:nth-child(7){ left:70%; animation-delay: 2s; }
+.hearts-bg span:nth-child(8){ left:80%; animation-delay: 4s; }
+.hearts-bg span:nth-child(9){ left:90%; animation-delay: 1.5s; }
+.hearts-bg span:nth-child(10){ left:95%; animation-delay: 3.5s; }
+@keyframes floatUp{
+  from{ transform: translateY(100vh) rotate(45deg); }
+  to{ transform: translateY(-10vh) rotate(45deg); }
+}
+
+/* ====== Hero ====== */
+.hero{
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+.overline{
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .8;
+  font-size: .9rem;
+}
+.hero h1{
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  line-height: 1.1;
+  margin: .4rem 0 1rem;
+}
+.subtitle{
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  opacity: .95;
+  max-width: 60ch;
+  margin-inline: auto;
+}
+.cta{ margin-top: 1.5rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+
+/* ====== Botões ====== */
+.btn{
+  appearance: none;
+  border: 0;
+  padding: .9rem 1.1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #5a2a8c;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, filter .2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+.btn:active{ transform: translateY(1px) scale(.98); }
+.btn--ghost{
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--muted);
+}
+
+/* ====== Grid de lembranças ====== */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.memory{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, background .2s ease;
+}
+.memory:hover{ transform: translateY(-2px); background: var(--card-strong); }
+.memory__emoji{ font-size: 2rem; }
+
+/* ====== Cards ====== */
+.card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: clamp(1rem, 2.5vw, 2rem);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  margin: 1rem 0 1.5rem;
+}
+.card--center{ text-align: center; }
+.checks{
+  list-style: none; padding: 0; margin: .5rem 0 0;
+  display: grid; gap: .35rem;
+}
+.checks li::before{ content: "✔ "; margin-right: .25rem; }
+
+.signature{
+  margin-top: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.signature span{ font-family: 'Great Vibes', cursive; font-size: 1.6rem; }
+
+/* ====== Footer ====== */
+.footer{
+  text-align:center;
+  opacity:.85;
+  padding: 1.5rem 0 3rem;
+  font-size:.95rem;
+}
+
+/* ====== Confete ====== */
+#confetti{ position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+#confetti.active .confetti-piece{ animation: drop 3s ease-in forwards; }
+.confetti-piece{
+  position: absolute;
+  top: -10vh;
+  width: 8px; height: 14px;
+  background: linear-gradient(180deg, #ffffff, #ffd6f3);
+  border-radius: 2px;
+  transform-origin: center;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.15));
+  animation: spin 1s linear infinite;
+}
+@keyframes drop{
+  to{ transform: translateY(110vh) rotate(360deg); opacity: .9; }
+}
+@keyframes spin{
+  to{ transform: rotate(360deg); }
+}
+
+/* ====== Acessibilidade e responsividade ====== */
+:focus-visible{ outline: 3px solid #ffd6f3; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
