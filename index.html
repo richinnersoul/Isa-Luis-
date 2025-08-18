@@ -23,6 +23,11 @@
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 
+  <div class="container2">
+  <img src="luizbrxa.png" alt="luizb" id="draggable">
+</div>
+
+
   <header class="hero" role="banner">
     <div class="hero__content wrapper">
       <p class="overline">donne-moi ta perte, et je te rendrai heureux</p>
@@ -152,6 +157,39 @@
       btnNao.style.transform = 'translateX(' + (x - parent.width/2) + 'px)';
     });
   </script>
+</script>
+
+<script>
+const img = document.getElementById("draggable");
+
+let offsetX, offsetY;
+let isDragging = false;
+
+img.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - img.offsetLeft;
+  offsetY = e.clientY - img.offsetTop;
+  img.style.cursor = "grabbing";
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  let x = e.clientX - offsetX;
+  let y = e.clientY - offsetY;
+
+  // Mantém dentro do container
+  const container = img.parentElement;
+  x = Math.max(0, Math.min(container.clientWidth - img.clientWidth, x));
+  y = Math.max(0, Math.min(container.clientHeight - img.clientHeight, y));
+
+  img.style.left = x + "px";
+  img.style.top = y + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  if (isDragging) img.style.cursor = "grab";
+  isDragging = false;
+});
 </script>
 </body>
 </html>
