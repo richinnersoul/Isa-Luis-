@@ -147,6 +147,37 @@
       btnNao.style.transform = 'translateX(' + (x - parent.width/2) + 'px)';
     });
   </script>
-  <script src="hearts.js"></script>
+  <script>
+(function() {
+  // Criar container se não existir
+  let container = document.getElementById("hearts-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "hearts-container";
+    document.body.appendChild(container);
+  }
+
+  function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("heart");
+    coracao.innerHTML = "❤"; 
+
+    // posição, tamanho e duração aleatórios
+    coracao.style.left = Math.random() * 100 + "vw";
+    const duracao = Math.random() * 3 + 2;
+    coracao.style.animationDuration = duracao + "s";
+    coracao.style.fontSize = Math.random() * 20 + 20 + "px";
+    coracao.style.color = ['#ff4d6d','#ff77aa','#ffd6f3','#ffffff'][Math.floor(Math.random()*4)];
+
+    container.appendChild(coracao);
+
+    // remover depois que subir
+    setTimeout(() => coracao.remove(), duracao * 1000);
+  }
+
+  // criar corações a cada 250ms
+  setInterval(criarCoracao, 250);
+})();
+</script>
 </body>
 </html>

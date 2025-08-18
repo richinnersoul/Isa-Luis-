@@ -1,30 +1,51 @@
-/* Container para os corações */
-#hearts-container {
-  position: fixed;   /* fica fixo na tela */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* não atrapalha cliques */
-  overflow: hidden;     /* corações fora da tela não aparecem */
-  z-index: 0;           /* atrás do conteúdo principal */
+/* Corações flutuantes estáticos já existentes */
+.hearts-bg{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
 }
-
-.heart {
+.hearts-bg span{
   position: absolute;
-  bottom: -50px;
+  width: 16px; height: 16px;
+  left: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #ffd6f3 60%, #ffffff00 70%);
+  transform: rotate(45deg);
+  animation: floatUp 14s linear infinite;
+  filter: blur(0.2px);
+  opacity: .35;
+  border-radius: 2px;
+}
+.hearts-bg span::before,
+.hearts-bg span::after{
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  background: inherit;
+  border-radius: 50%;
+}
+.hearts-bg span::before{ left: -8px; }
+.hearts-bg span::after{ top: -8px; }
+
+/* Corações dinâmicos adicionados pelo script */
+#hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* atrás do conteúdo principal */
+}
+#hearts-container .heart {
+  position: absolute;
   color: #ff4d6d;
   font-size: 24px;
-  animation: subir linear forwards;
+  user-select: none;
+  pointer-events: none;
+  animation: floatUp 3s linear forwards;
 }
 
-@keyframes subir {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-110vh) scale(1.5);
-    opacity: 0;
-  }
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
 }
