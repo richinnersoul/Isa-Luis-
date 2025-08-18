@@ -1,11 +1,21 @@
-/* Corações flutuantes */
+/* Container para os corações */
+#hearts-container {
+  position: fixed;   /* fica fixo na tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* não atrapalha cliques */
+  overflow: hidden;     /* corações fora da tela não aparecem */
+  z-index: 0;           /* atrás do conteúdo principal */
+}
+
 .heart {
   position: absolute;
   bottom: -50px;
   color: #ff4d6d;
   font-size: 24px;
   animation: subir linear forwards;
-  pointer-events: none; /* para não atrapalhar cliques */
 }
 
 @keyframes subir {

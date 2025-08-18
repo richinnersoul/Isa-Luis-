@@ -1,9 +1,17 @@
 (function() {
+  // Criar container se não existir
+  let container = document.getElementById("hearts-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "hearts-container";
+    document.body.appendChild(container);
+  }
+
   function criarCoracao() {
     const coracao = document.createElement("div");
     coracao.classList.add("heart");
-    coracao.innerHTML = "❤"; // coração
-    document.body.appendChild(coracao);
+    coracao.innerHTML = "❤"; 
+    container.appendChild(coracao);
 
     // posição aleatória
     coracao.style.left = Math.random() * 100 + "vw";
@@ -19,6 +27,5 @@
     }, duracao * 1000);
   }
 
-  // criar coração a cada 300ms
   setInterval(criarCoracao, 300);
 })();
