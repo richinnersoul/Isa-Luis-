@@ -1,0 +1,20 @@
+/* Corações flutuantes */
+.heart {
+  position: absolute;
+  bottom: -50px;
+  color: #ff4d6d;
+  font-size: 24px;
+  animation: subir linear forwards;
+  pointer-events: none; /* para não atrapalhar cliques */
+}
+
+@keyframes subir {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
