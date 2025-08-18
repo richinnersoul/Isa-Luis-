@@ -199,3 +199,11 @@ h2 {
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; }
 }
+
+.luizb {
+  position: absolute;   /* Permite posicionamento específico */
+  top: 100px;           /* Distância do topo da página */
+  left: 200px;          /* Distância da esquerda */
+  width: 150px;         /* Largura da imagem */
+  height: auto;         /* Mantém proporção */
+}
